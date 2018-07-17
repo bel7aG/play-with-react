@@ -31,9 +31,18 @@ export default class Persons extends Component {
             ['bel7aG', 'React', 'DeveloperMan', true.toString()]]
       }
     });
-    console.log(this.state.persons[2][randomName]);
   };
 
+  onChangeName = (event) => {
+    const inputValue = event.target.value;
+    this.setState(() => ({
+      persons: [
+        {name: inputValue, surname: 'Gharsallah', age: 22, job: 'Javascript Developer'},
+        {name: 'lola', surname: 'lol', age: 40, job: 'IDIOT'},
+        ['bel7aG', 'React', 'DeveloperMan', true.toString()]
+      ]
+    }));
+  }
 
 
   render() {
@@ -42,10 +51,11 @@ export default class Persons extends Component {
       <div className="persons">
         <Person
           name={personOne.name}
-          handleRandomName={this.handleRandomName} />
+          handleRandomName={this.handleRandomName}
+          onChangeName={this.onChangeName}
+          autoFocus={true} />
 
-        <Person
-          name={personTwo.name} />
+        <Person name={personTwo.name} autoFocus={false}/>
       </div>
     );
   }
