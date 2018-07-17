@@ -13,13 +13,22 @@ export default class Persons extends Component {
 
   handleRandomName = () => {
     const randomName = Math.floor(Math.random() * this.state.persons[2].length);
-    this.setState((prevState) => {
-      console.log(prevState);
+    this.setState(() => {
       return {
-        persons: [
-          ...prevState.persons,
-          prevState.persons[0].name === 'belhassen' ? prevState.persons[0].name = 'bel7aG' : prevState.persons[0].name = 'belhassen'
-        ]
+          persons: [
+            {
+              name: this.state.persons[2][randomName],
+              surname: 'Gharsallah',
+              age: 22,
+              job: 'Javascript Developer'
+            },
+            {
+              name: 'lola',
+              surname: 'lol',
+              age: 40,
+              job: 'IDIOT'
+            },
+            ['bel7aG', 'React', 'DeveloperMan', true.toString()]]
       }
     });
     console.log(this.state.persons[2][randomName]);
