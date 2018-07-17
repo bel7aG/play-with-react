@@ -5,8 +5,8 @@ const Person = (props) => {
     <div>
       <p>My Name is {props.name} im {props.age} years old</p>
       {props.children}
-      <button onClick={props.handlePersonName}>{props.name}</button>
-      <input type="text" onChange={this.onChangeName} value={props} />
+      <button onClick={props.handlePersonName}>Change</button>
+      <input type="text" onChange={props.onChangeName} placeholder={props.name} autoFocus />
     </div>
   );
 }
