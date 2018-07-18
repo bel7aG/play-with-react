@@ -56,32 +56,40 @@ export default class Persons extends Component {
     }));
   }
 
+  handleDeletePerson = (personIndex) => {
+    this.setState((prevState) => ({
+      persons: prevState.persons.filter((person, index) => index !== personIndex)
+    }));
+  }
+
   render() {
-    const [personOne, personTwo] = this.state.persons;
-    let persons = null;
+    let personsForm = null;
+    if (this.state.isVisible) {
+      personsForm = (
+        <form className="persons" >
+          {this.state.persons.filter(({surname}) => surname)
+            .map((person, index) =>
+              <Person
+                handleDeletePerson={this.handleDeletePerson.bind(this, index)}
+                key={person.surname}
+                name={person.name}
+                handleRandomName={this.handleRandomName}
+                onChangeName={this.onChangeName}
+                className={`${person.name}-${person.surname}`}
+              />)}
+        </form>
+      );
+    }
+
     return (
       <React.Fragment>
         {this.state.persons.length > 1 && (
           <React.Fragment>
-
-            <button onClick={this.handleIsVisible}>{this.state.isVisible? 'Hide': 'Show'}</button>
-
-            {this.state.isVisible && (
-              <form className="persons">
-                {this.state.persons.filter(({surname}) => surname)
-                  .map((person) =>
-                    <Person
-                      key={person.surname}
-                      name={person.name}
-                      handleRandomName={this.handleRandomName}
-                      onChangeName={this.onChangeName}
-                      className={`${person.name}-${person.surname}`}
-                    />)}
-              </form>
-            )}
+            <button onClick={this.handleIsVisible}>{this.state.isVisible ? 'Hide': 'Show'}</button>
+            {personsForm}
           </React.Fragment>
         )}
-          </React.Fragment>
-        );
+      </React.Fragment>
+    );
   }
 }
