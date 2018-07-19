@@ -15,16 +15,22 @@ export default class Persons extends Component {
     console.log(props);
   }
 
-  handleRandomName = (event) => {
+  handleRandomName = (event, personId) => {
     event.preventDefault();
     console.log(event.target.previousElementSibling.textContent.slice());
     const randomName = Math.floor(Math.random() * this.state.persons[2].length);
+    console.log(this.state.persons[2][randomName]);
     this.setState((prevState) => ({
       persons: prevState.persons.map((person, index) => {
-        if (!Array.isArray(person)) {
-          return person;
+        if (person.id === personId) {
+          return {
+            ...person,
+            ...person.name = prevState.persons[
+              prevState.persons.findIndex((person) => Array.isArray(person))
+            ][randomName]
+          };
         }
-
+        return person;
       })
     }));
   };
@@ -43,12 +49,11 @@ export default class Persons extends Component {
       persons: prevState.persons.map((person, index) => {
         if (person.id === personId) {
           return {
-            ...prevState.persons[index],
-            ...prevState.persons[index].name = inputValue
+            ...person,
+            ...person.name = inputValue
           }
-        } else {
-          return person
         }
+        return person;
       })
     }))
   }
@@ -66,6 +71,14 @@ export default class Persons extends Component {
   }
 
   render() {
+
+    const toggleButtonStyle = {
+      backgroundColor: '#0f4',
+      border: '1px solid #f00',
+      padding: '10px 7px',
+      vursor: 'pointer'
+    };
+
     let personsForm = null;
     if (this.state.isVisible) {
       personsForm = (
@@ -74,7 +87,9 @@ export default class Persons extends Component {
             .map((person, index) =>
               <Person
                 handleDeletePerson={this.handleDeletePerson.bind(this, index)}
-                handleRandomName={this.handleRandomName}
+                handleRandomName={(event) => {
+                  this.handleRandomName(event, person.id);
+                }}
                 onChangeName={(event) => {
                   this.onChangeName(event, person.id);
                 }}
@@ -85,13 +100,19 @@ export default class Persons extends Component {
               />)}
         </form>
       );
+      toggleButtonStyle.backgroundColor = '#F00';
     }
 
     return (
       <React.Fragment>
         {this.state.persons.length > 1 && (
           <React.Fragment>
-            <button onClick={this.handleIsVisible}>{this.state.isVisible ? 'Hide': 'Show'}</button>
+            <button
+              onClick={this.handleIsVisible}
+              style={toggleButtonStyle}
+            >
+              {this.state.isVisible ? 'Hide': 'Show'}
+            </button>
             {personsForm}
           </React.Fragment>
         )}
