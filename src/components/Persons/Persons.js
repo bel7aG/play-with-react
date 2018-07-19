@@ -6,8 +6,8 @@ export default class Persons extends Component {
     super(props);
     this.state = {
       persons: [
-        {name: 'belhassen', surname: 'Gharsallah', age: 22, job: 'Javascript Developer'},
-        {name: 'lola', surname: 'lol', age: 40, job: 'IDIOT'},
+        {id: 'ABC1', name: 'belhassen', surname: 'Gharsallah', age: 22, job: 'Javascript Developer'},
+        {id: 'ABC2', name: 'lola', surname: 'lol', age: 40, job: 'IDIOT'},
         ['bel7aG', 'React', 'DeveloperMan', true.toString()]
       ],
       isVisible: true
@@ -17,37 +17,40 @@ export default class Persons extends Component {
 
   handleRandomName = (event) => {
     event.preventDefault();
-    console.log(event.target.parentElement);
+    console.log(event.target.previousElementSibling.textContent.slice());
     const randomName = Math.floor(Math.random() * this.state.persons[2].length);
-    this.setState(() => {
-      return {
-          persons: [
-            {
-              name: this.state.persons[2][randomName],
-              surname: 'Gharsallah',
-              age: 22,
-              job: 'Javascript Developer'
-            },
-            {
-              name: 'lola',
-              surname: 'lol',
-              age: 40,
-              job: 'IDIOT'
-            },
-            ['bel7aG', 'React', 'DeveloperMan', true.toString()]]
-      }
-    });
+    this.setState((prevState) => ({
+      persons: prevState.persons.map((person, index) => {
+        if (!Array.isArray(person)) {
+          return person;
+        }
+
+      })
+    }));
   };
 
-  onChangeName = (event) => {
+  onChangeName = (event, personId) => {
     const inputValue = event.target.value;
-    this.setState(() => ({
-      persons: [
-        {name: inputValue, surname: 'Gharsallah', age: 22, job: 'Javascript Developer'},
-        {name: 'lola', surname: 'lol', age: 40, job: 'IDIOT'},
-        ['bel7aG', 'React', 'DeveloperMan', true.toString()]
-      ]
-    }));
+    // const findPersonIndex = this.state.persons.findIndex(({id}) => id === personId);
+    // const selectedPerson = {
+    //   ...this.state.persons[findPersonIndex],
+    // }
+    // selectedPerson.name = inputValue;
+    // const persons = [...this.state.persons];
+    // persons[findPersonIndex] = selectedPerson;
+
+    this.setState((prevState) => ({
+      persons: prevState.persons.map((person, index) => {
+        if (person.id === personId) {
+          return {
+            ...prevState.persons[index],
+            ...prevState.persons[index].name = inputValue
+          }
+        } else {
+          return person
+        }
+      })
+    }))
   }
 
   handleIsVisible = () => {
@@ -71,10 +74,12 @@ export default class Persons extends Component {
             .map((person, index) =>
               <Person
                 handleDeletePerson={this.handleDeletePerson.bind(this, index)}
+                handleRandomName={this.handleRandomName}
+                onChangeName={(event) => {
+                  this.onChangeName(event, person.id);
+                }}
                 key={person.surname}
                 name={person.name}
-                handleRandomName={this.handleRandomName}
-                onChangeName={this.onChangeName}
                 className={`${person.name}-${person.surname}`}
               />)}
         </form>
