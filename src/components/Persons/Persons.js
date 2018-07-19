@@ -78,8 +78,9 @@ export default class Persons extends Component {
                 onChangeName={(event) => {
                   this.onChangeName(event, person.id);
                 }}
-                key={person.surname}
                 name={person.name}
+                age={person.age}
+                key={person.surname}
                 className={`${person.name}-${person.surname}`}
               />)}
         </form>
