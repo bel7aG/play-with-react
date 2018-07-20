@@ -1,0 +1,11 @@
+.persons {
+  &.red {
+    background-color: #222;
+    color: #fff;
+    font-size: 2rem;
+  }
+  &.transparent {
+    opacity: .4;
+    color: red !important;
+  }
+}

@@ -10,7 +10,7 @@ const Person = (props) => {
         onChange={props.onChangeName}
         placeholder={props.name}
         autoFocus={props.autoFocus} />
-      <button onClick={props.handleDeletePerson}>X</button>
+      <button style={props.removeButtonStyles} onClick={props.handleDeletePerson}>X</button>
     </div>
   );
 }

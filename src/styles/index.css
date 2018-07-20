@@ -41,3 +41,12 @@ button {
   border: none; }
   button:focus {
     outline: none; }
+
+.persons.red {
+  background-color: #222;
+  color: #fff;
+  font-size: 2rem; }
+
+.persons.transparent {
+  opacity: .4;
+  color: red !important; }
