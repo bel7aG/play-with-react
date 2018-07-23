@@ -16,26 +16,30 @@ export default class Persons extends Component {
       isVisible: true
     };
     console.log(props);
+    console.log(this.state);
   }
 
   handleRandomName = (event, personId) => {
     event.preventDefault();
-    console.log(event.target.previousElementSibling.textContent.slice());
-    const randomName = Math.floor(Math.random() * this.state.persons[
-      this.state.persons.findIndex((person) => Array.isArray(person))
+
+    const randomNameNum = Math.floor(Math.random() * this.state.persons[
+      this.state.persons.findIndex((element) => Array.isArray(element))
     ].length);
+
     this.setState((prevState) => ({
-      persons: prevState.persons.map((person, index) => {
-        if (person.id === personId) {
-          return {
-            ...person,
-            ...person.name = prevState.persons[
-              prevState.persons.findIndex((person) => Array.isArray(person))
-            ][randomName]
-          };
-        }
-        return person;
-      })
+      persons: prevState.persons.map((person) => {
+          if (person.id === personId) {
+            console.log(person);
+            return {
+              ...person,
+              ...person.name = prevState.persons[
+                prevState.persons.findIndex((person) => Array.isArray(person))
+              ][randomNameNum]
+            }
+          }
+          return person;
+        })
+
     }));
   };
 
@@ -84,20 +88,11 @@ export default class Persons extends Component {
       alignItems: 'center',
       justifyContent: 'center',
       padding: '15px 7px',
-      vursor: 'pointer',
+      cursor: 'pointer',
       width: 100,
       fontSize: 18
     };
 
-    const formClasses = ['persons'];
-    if (this.state.persons.length > 2) {
-      formClasses.push('red');
-    }
-    if (this.state.persons.length < 3) {
-      formClasses.push('ouch');
-    }
-
-    let i = 0;
     const removeButton = {
       backgroundColor: 'white',
       color: 'yellow',
@@ -108,21 +103,18 @@ export default class Persons extends Component {
       borderBottomRightRadius: 0
     };
 
-    while (i < this.state.persons.length - 1) {
-      // i can do that with nth-child(odd) and ..event
-      // but i just paly with my loven React
-      if ((i % 2) === 0) {
-        removeButton.backgroundColor = 'red';
-      } else {
-        removeButton.backgroundColor = 'yellow';
-      }
-      i++;
+    let classes = ['persons'];
+    if (this.state.persons.length - 1 <= 2) {
+      removeButton.backgroundColor = 'red';
+      classes.push('red opa');
+    } else {
+      classes.push('opaNo');
     }
 
     let personsForm = null;
     if (this.state.isVisible) {
       personsForm = (
-        <form className={formClasses.join(' ')}>
+        <form className={classes.join(' ')}>
           {this.state.persons.filter(({surname}) => surname)
             .map((person, index) =>
               <Person

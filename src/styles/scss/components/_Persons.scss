@@ -1,11 +1,17 @@
 .persons {
   &.red {
-    background-color: #222;
-    color: #fff;
+    background-color: #fff;
+    color: #f00;
     font-size: 2rem;
+    opacity: 1;
+    transition: all 2s;
   }
-  &.transparent {
-    opacity: .4;
-    color: red !important;
+  &.opa {
+    opacity: .2;
+    color: green !important;
+    transition: all 2s;
+    &.No {
+      opacity: 1;
+    }
   }
 }

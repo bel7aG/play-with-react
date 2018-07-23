@@ -43,10 +43,15 @@ button {
     outline: none; }
 
 .persons.red {
-  background-color: #222;
-  color: #fff;
-  font-size: 2rem; }
+  background-color: #fff;
+  color: #f00;
+  font-size: 2rem;
+  opacity: 1;
+  transition: all 2s; }
 
-.persons.transparent {
-  opacity: .4;
-  color: red !important; }
+.persons.opa {
+  opacity: .2;
+  color: green !important;
+  transition: all 2s; }
+  .persons.opa.No {
+    opacity: 1; }
