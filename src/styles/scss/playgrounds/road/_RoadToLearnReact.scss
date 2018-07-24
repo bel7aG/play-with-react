@@ -2,7 +2,6 @@
   padding: 4rem 8rem;
 
   &__event-handler {
-    color: red !important;
 
     > h1:first-child {
       text-align: center;
@@ -24,10 +23,10 @@
     > :not(:first-child) {
       border-bottom: 1px solid black;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       border-left: 1px solid #111;
       border-right: 1px solid #111;
-      padding: 2rem 1rem;
+      padding: 2rem 0;
       align-items: center;
       span {
         display: flex;
@@ -35,9 +34,25 @@
         justify-content: center;
         align-items: center;
 
+
         &:not(:last-child) {
           border-right: 1px solid #666;
+          color: #222 !important;
         }
+
+        &:last-child {
+          width: 100%;
+          color: #33DD22;
+          background-color: #222;
+          transition: all .1s ease-in;
+
+          &:hover {
+            font-weight: 600;
+            color: #ff3322 !important;
+            cursor: pointer;
+          }
+        }
+
       }
     }
   }

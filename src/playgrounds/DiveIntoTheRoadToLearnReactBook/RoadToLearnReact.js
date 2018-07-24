@@ -26,7 +26,7 @@ export default class RoadToLearnReact extends Component {
 
   onDismiss = (id) => {
     this.setState((prevState) => ({
-      list: prevState.list.filter((item) => item.objectID !== id)
+      list: prevState.list.filter(({objectID}) => objectID !== id)
     }));
   }
 
@@ -34,7 +34,10 @@ export default class RoadToLearnReact extends Component {
 
 
     return (<div className="road">
-      <EventHandler list={this.state.list} />
+      <EventHandler
+        list={this.state.list}
+        onDismiss={this.onDismiss}
+      />
     </div>);
   }
 }
