@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import EventHandler from './EventHandler';
 
 export default class RoadToLearnReact extends Component {
   render() {
     return (
-      <React.Fragment>
-        Road To Learn React Book.
-      </React.Fragment>
+      <div className="road">
+        <EventHandler />
+      </div>
     );
   }
 }

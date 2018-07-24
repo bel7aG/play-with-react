@@ -1,0 +1,17 @@
+.road {
+  padding-top: 4rem;
+  
+  &__event-handler {
+    color: red !important;
+
+    > h1:first-child {
+      text-align: center;
+      letter-spacing: 0;
+      transition: letter-spacing .17s ease;
+
+      &:hover {
+        letter-spacing: 2px;
+      }
+    }
+  }
+}
