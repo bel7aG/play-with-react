@@ -81,7 +81,7 @@ body {
       justify-content: center; }
 
 .road {
-  padding-top: 4rem; }
+  padding: 4rem 8rem; }
   .road__event-handler {
     color: red !important; }
     .road__event-handler > h1:first-child {
@@ -90,3 +90,21 @@ body {
       transition: letter-spacing .17s ease; }
       .road__event-handler > h1:first-child:hover {
         letter-spacing: 2px; }
+    .road__event-handler .item-0 {
+      border-top: 1px solid black;
+      margin-top: 2rem; }
+    .road__event-handler > :not(:first-child) {
+      border-bottom: 1px solid black;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-left: 1px solid #111;
+      border-right: 1px solid #111;
+      padding: 2rem 1rem;
+      align-items: center; }
+      .road__event-handler > :not(:first-child) span {
+        display: flex;
+        height: calc(100% + (2rem * 2));
+        justify-content: center;
+        align-items: center; }
+        .road__event-handler > :not(:first-child) span:not(:last-child) {
+          border-right: 1px solid #666; }

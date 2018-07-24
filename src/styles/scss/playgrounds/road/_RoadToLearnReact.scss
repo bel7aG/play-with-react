@@ -1,6 +1,6 @@
 .road {
-  padding-top: 4rem;
-  
+  padding: 4rem 8rem;
+
   &__event-handler {
     color: red !important;
 
@@ -11,6 +11,33 @@
 
       &:hover {
         letter-spacing: 2px;
+      }
+    }
+
+    .item {
+      &-0 {
+        border-top: 1px solid black;
+        margin-top: 2rem;
+      }
+    }
+
+    > :not(:first-child) {
+      border-bottom: 1px solid black;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-left: 1px solid #111;
+      border-right: 1px solid #111;
+      padding: 2rem 1rem;
+      align-items: center;
+      span {
+        display: flex;
+        height: calc(100% + (2rem * 2));
+        justify-content: center;
+        align-items: center;
+
+        &:not(:last-child) {
+          border-right: 1px solid #666;
+        }
       }
     }
   }
