@@ -1,3 +1,4 @@
+import React from 'react';
 // just play because more code more experience
 
 const myOne = {
@@ -13,7 +14,7 @@ const correctMyOneUsingES6 = {
     console.log('holly holly');
   },
   ok: 'my okey',
-  myName
+  myName: 'ok'
 };
 
 // Last but not least use computed property names in JavaScript ES6

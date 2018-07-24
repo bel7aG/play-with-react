@@ -1,16 +1,20 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Header, Persons, Home, NotFound } from '../components';
+import { Header, Main, Persons, Home, NotFound } from '../components';
+import { RoadToLearnReact } from '../playgrounds';
 
 const AppRouter = () => (
     <BrowserRouter>
       <React.Fragment>
         <Header />
-        <Switch>
-          <Route path="/" component={Home} exact />
-          <Route path="/persons" component={Persons} exact />
-          <Route component={NotFound} />
-        </Switch>
+        <Main>
+          <Switch>
+            <Route path="/" component={Home} exact />
+            <Route path="/persons" component={Persons} exact />
+            <Route path="/the-road-to-learn-react" component={RoadToLearnReact} />
+            <Route component={NotFound} />
+          </Switch>
+        </Main>
       </React.Fragment>
     </BrowserRouter>
 );

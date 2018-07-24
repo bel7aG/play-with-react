@@ -10,7 +10,8 @@ html {
 body {
   overflow-x: hidden;
   overflow-y: hidden;
-  position: relative; }
+  position: relative;
+  font-size: 1.5rem; }
 
 body, .container, #root {
   height: 100%; }
@@ -41,6 +42,9 @@ button {
   border: none; }
   button:focus {
     outline: none; }
+
+body {
+  background-color: #fff; }
 
 .persons.red {
   background-color: #fff;

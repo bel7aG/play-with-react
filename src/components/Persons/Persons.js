@@ -15,8 +15,10 @@ export default class Persons extends Component {
       ],
       isVisible: true
     };
-    console.log(props);
-    console.log(this.state);
+  }
+
+  componentWillUnmount() {
+    
   }
 
   handleRandomName = (event, personId) => {
@@ -29,7 +31,6 @@ export default class Persons extends Component {
     this.setState((prevState) => ({
       persons: prevState.persons.map((person) => {
           if (person.id === personId) {
-            console.log(person);
             return {
               ...person,
               ...person.name = prevState.persons[
