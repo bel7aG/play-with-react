@@ -64,7 +64,7 @@ body {
   background-color: rgba(34, 34, 34, 0.9);
   color: #fff;
   height: 7.9rem;
-  width: 100%; }
+  display: block; }
   .header > .nav > ul {
     display: flex;
     align-items: center;
@@ -81,18 +81,21 @@ body {
       justify-content: center; }
 
 .road {
-  padding: 4rem 8rem; }
+  padding: 4rem 5rem; }
   .road__event-handler > h1:first-child {
     text-align: center;
     letter-spacing: 0;
-    transition: letter-spacing .17s ease; }
+    transform: skewY(0);
+    transition: all .17s ease; }
     .road__event-handler > h1:first-child:hover {
-      letter-spacing: 2px; }
+      letter-spacing: 2px;
+      transform: skewY(-3deg); }
   .road__event-handler .item-0 {
     border-top: 1px solid black;
-    margin-top: 2rem; }
+    margin-top: 4rem; }
   .road__event-handler > :not(:first-child) {
     border-bottom: 1px solid black;
+    min-width: 450px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     border-left: 1px solid #111;
@@ -116,3 +119,22 @@ body {
           font-weight: 600;
           color: #ff3322 !important;
           cursor: pointer; }
+
+.form {
+  border-top: 1px solid #000;
+  margin: 4rem 0;
+  padding-top: 4rem; }
+  .form-box {
+    display: flex;
+    height: 5rem;
+    justify-content: center;
+    align-items: center; }
+  .form-input {
+    background-color: #222;
+    border: 0;
+    border-radius: 3px;
+    color: #fff;
+    padding: .7rem 1.5rem;
+    height: 2rem; }
+    .form-input:focus {
+      outline: none; }
