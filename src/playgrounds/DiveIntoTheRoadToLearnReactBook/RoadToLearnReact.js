@@ -40,7 +40,7 @@ export default class RoadToLearnReact extends Component {
 
   onSearchChange = (event, searchItem) => {
     const inputValue = event.target.value;
-    this.setState((prevState) => ({
+    this.setState(() => ({
       searchItem: inputValue,
     }));
   }
