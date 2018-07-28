@@ -16,15 +16,12 @@
       }
     }
 
-    .item {
-      &-0 {
-        border-top: 1px solid black;
-        margin-top: 4rem;
-      }
+    :last-child {
+      border-bottom: 1px solid #000;
     }
 
     > :not(:first-child) {
-      border-bottom: 1px solid black;
+      border-top: 1px solid black;
       min-width: 450px;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -32,12 +29,12 @@
       border-right: 1px solid #111;
       padding: 2rem 0;
       align-items: center;
+
       span {
         display: flex;
         height: calc(100% + (2rem * 2));
         justify-content: center;
         align-items: center;
-
 
         &:not(:last-child) {
           border-right: 1px solid #666;

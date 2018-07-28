@@ -90,11 +90,10 @@ body {
     .road__event-handler > h1:first-child:hover {
       letter-spacing: 2px;
       transform: skewY(-3deg); }
-  .road__event-handler .item-0 {
-    border-top: 1px solid black;
-    margin-top: 4rem; }
+  .road__event-handler :last-child {
+    border-bottom: 1px solid #000; }
   .road__event-handler > :not(:first-child) {
-    border-bottom: 1px solid black;
+    border-top: 1px solid black;
     min-width: 450px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);

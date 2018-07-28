@@ -13,24 +13,30 @@ export default class RoadToLearnReact extends Component {
         points: 4,
         objectID: 0
       }, {
-        title: 'Redux',
+        title: 'ES6',
         url: 'https://github.com/reactjs/redux',
-        author: 'bel7aG',
+        author: 'Ecmascript Lol',
         num_comments: 2,
         points: 5,
         objectID: 1
       }, {
-        title: 'React',
-        url: 'https://facebook.github.io/react/',
+        title: 'bel7aG',
+        url: 'https:/github.io/bel7aG/',
         author: 'Belhassen Gharsallah',
         num_comments: 3,
         points: 4,
         objectID: 2
+      }, {
+        title: 'Love JS',
+        url: '...',
+        author: 'bel7aG',
+        num_comments: 1,
+        points: 2,
+        objectID: 3
       }
     ],
     searchItem: ''
   };
-
 
   onDismiss = (id) => {
     this.setState((prevState) => ({
@@ -40,8 +46,9 @@ export default class RoadToLearnReact extends Component {
 
   onSearchChange = (event, searchItem) => {
     const inputValue = event.target.value;
+    console.log(inputValue.trim());
     this.setState(() => ({
-      searchItem: inputValue,
+      searchItem: inputValue.trim()
     }));
   }
 
@@ -54,7 +61,7 @@ export default class RoadToLearnReact extends Component {
       />
       <InteractionsWithFormsAndEvents
         onSearchChange={this.onSearchChange}
-        title={this.state.list.title}
+        value={this.state.searchItem}
       />
     </div>);
   }
