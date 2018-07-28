@@ -43,15 +43,21 @@
 
         &:last-child {
           width: 100%;
-          color: #33DD22;
           background-color: #222;
-          transition: all .1s ease-in;
 
-          &:hover {
-            font-weight: 600;
-            color: #ff3322 !important;
-            cursor: pointer;
+          > button {
+            height: 100%;
+            width: 100%;
+            color: #33DD22;
+            transition: all .1s ease-in;
+
+            &:hover {
+              font-weight: 600;
+              color: #ff3322 !important;
+              cursor: pointer;
+            }
           }
+
         }
 
       }

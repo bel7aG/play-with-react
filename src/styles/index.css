@@ -39,7 +39,8 @@ pre, code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace; }
 
 button {
-  border: none; }
+  border: none;
+  background-color: inherit; }
   button:focus {
     outline: none; }
 
@@ -111,17 +112,19 @@ body {
         color: #222 !important; }
       .road__event-handler > :not(:first-child) span:last-child {
         width: 100%;
-        color: #33DD22;
-        background-color: #222;
-        transition: all .1s ease-in; }
-        .road__event-handler > :not(:first-child) span:last-child:hover {
-          font-weight: 600;
-          color: #ff3322 !important;
-          cursor: pointer; }
+        background-color: #222; }
+        .road__event-handler > :not(:first-child) span:last-child > button {
+          height: 100%;
+          width: 100%;
+          color: #33DD22;
+          transition: all .1s ease-in; }
+          .road__event-handler > :not(:first-child) span:last-child > button:hover {
+            font-weight: 600;
+            color: #ff3322 !important;
+            cursor: pointer; }
 
 .form {
-  border-top: 1px solid #000;
-  margin: 4rem 0;
+  margin-bottom: 2rem;
   padding-top: 4rem; }
   .form-box {
     display: flex;
